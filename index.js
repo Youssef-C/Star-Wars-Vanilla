@@ -8,14 +8,16 @@ const SWAPI_page07 = 'http://swapi.dev/api/people/?page=7';
 const SWAPI_page08 = 'http://swapi.dev/api/people/?page=8';
 const SWAPI_page09 = 'http://swapi.dev/api/people/?page=9';
 
+const pbody = document.querySelector('pbody');
+
 const nextButton = document.getElementById("button-next")
 const preButton = document.getElementById("button-previous")
+
 
 let SWAPI_url = '';  
 let page = 1;    
 
 nextButton.onclick = function(){
-    console.log(page)
     page = page+1; 
     pageCheck();
 };
@@ -24,7 +26,6 @@ nextButton.onclick = function(){
 preButton.onclick = function(){
     if (page >= 2) {
         page = page-1; 
-        console.log(page)
         pageCheck();
     }
 };
@@ -60,21 +61,19 @@ function pageCheck() {
     }
 
     getSWAPI();
+    
 };
 
 
 pageCheck();
 
-
 //SIMPLY GETS THE DATA FROM THE API BASED ON THE PAGE NUMBER
 async function getSWAPI() {
     const response = await fetch(SWAPI_url);   
     const data = await response.json();
-    /*
-    const { name, birth_year: age } = data;
-    console.log(age);
-    */
+    
+    const characterName = (data.results[0].name);
     console.log(data);
-    console.log(page);
-}
+    document.getElementById("demo").innerHTML = characterName;
 
+};
