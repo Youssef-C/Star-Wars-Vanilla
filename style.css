@@ -1,4 +1,19 @@
 
+.charTitle{
+    background-color: red;
+    height: 40px;
+    width: 160px;
+}
+
+#modal-open{
+    height: 40px;
+    width: 160px;
+}
+
+#modal-open:hover{
+    background-color: blue;
+}
+
 .page-button{
     height: 30px;
     width: auto;

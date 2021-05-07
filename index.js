@@ -10,6 +10,7 @@ async function getSWAPI() {
     const response = await fetch(SWAPI_url);   
     const data = await response.json();
 
+    /*
     var myObj = (data.results);  
 
     let names = myObj.map(a => " " + a.name);
@@ -19,7 +20,13 @@ async function getSWAPI() {
     
     document.getElementById("names").innerHTML = names;
     document.getElementById("birth-years").innerHTML = ages;
-    document.getElementById("eye-colors").innerHTML =  eyes;
+    document.getElementById("eye-colors").innerHTML =  eyes; */
+
+   /* const modalButton = document.getElementById("modal-open")
+
+    modalButton.onclick = function(){
+        console.log("hello")
+    }; */
 
     nextButton.onclick = function(){
         if (data.next !== null) {
@@ -36,12 +43,11 @@ async function getSWAPI() {
         }
     }
     
-    console.log(data.results);
     document.querySelector('#app').innerHTML = data.results.map(characters => 
         `<div>
-          <h3>Name: ${characters.name}</h3>
-          <div>Age: ${characters.birth_year}</div>
-          <div>Place: ${characters.eye_color}</div>
+          <h3 class="charTitle">${characters.name}</h3>
+          <div class="charAge">Age: ${characters.birth_year}</div>
+          <div class="">Eye Color: ${characters.eye_color}</div>
         </div>`
     ).join('')
 
