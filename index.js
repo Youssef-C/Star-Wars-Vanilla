@@ -12,27 +12,39 @@ async function getSWAPI() {
 
     var myObj = (data.results);  
 
-    let names = myObj.map(a => a.name + " ");
-    let ages = myObj.map(a => a.birth_year + " ");
-    let eyes = myObj.map(a => a.eye_color + " ");
+    let names = myObj.map(a => " " + a.name);
+    let ages = myObj.map(a => " " + a.birth_year);
+    let eyes = myObj.map(a => " " + a.eye_color);
 
+    
     document.getElementById("names").innerHTML = names;
     document.getElementById("birth-years").innerHTML = ages;
     document.getElementById("eye-colors").innerHTML =  eyes;
 
     nextButton.onclick = function(){
-        SWAPI_url = data.next; 
-        getSWAPI();
+        if (data.next !== null) {
+            SWAPI_url = data.next; 
+            getSWAPI();
+        }
     };
     
+
     preButton.onclick = function(){
         if (data.previous !== null) {
             SWAPI_url = data.previous;
             getSWAPI();
         }
     }
+    
+    console.log(data.results);
+    document.querySelector('#app').innerHTML = data.results.map(characters => 
+        `<div>
+          <h3>Name: ${characters.name}</h3>
+          <div>Age: ${characters.birth_year}</div>
+          <div>Place: ${characters.eye_color}</div>
+        </div>`
+    ).join('')
 
 };
 
 getSWAPI();
-
