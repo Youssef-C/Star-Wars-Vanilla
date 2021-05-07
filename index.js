@@ -48,6 +48,12 @@ async function getSWAPI() {
         </div>`
     ).join('');
 
+    document.querySelector('#modal-content').innerHTML = data.results.map(characters =>
+            `<div>
+                <div class="charAge">Age: ${characters.birth_year}</div>
+            </div>`
+        )
+
     //---MODAL---
 
     // Get the modal
