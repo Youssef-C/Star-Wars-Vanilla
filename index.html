@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Wars API App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,7 +16,19 @@
         <h3>Display names here</h3>
     </div>
 
-    <button class="page-button" id="button-next">Next</button>
-    <button class="page-button" id="button-previous">Previous</button>    
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+
+    </div>
+    
+    <button class="page-button" id="button-previous">Previous</button>   
+    <button class="page-button" id="button-next">Next</button> 
 </body>
 </html>
