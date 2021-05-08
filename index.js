@@ -48,11 +48,20 @@ async function getSWAPI() {
         </div>`
     ).join('');
 
-    document.querySelector('#modal-content').innerHTML = data.results.map(characters =>
+    //---Potential solve for the modal button and it's content---
+    var counter = "";
+    for (i = 0; i < data.results.length; i++) {
+            counter += data.results[i].name + "<br>"
+    };
+
+    document.getElementById("demo").innerHTML = counter;
+        
+    document.querySelector('#modal-content').innerHTML = data.results.map(characters => 
             `<div>
+                <span class="close">&times;</span>
                 <div class="charAge">Age: ${characters.birth_year}</div>
-            </div>`
-        )
+                <div class="charAge">Name: ${characters.name}</div>
+            </div>`);
 
     //---MODAL---
 
@@ -63,7 +72,7 @@ async function getSWAPI() {
     var btn = document.getElementsByClassName("myBtn");
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("close");
 
     // When the user clicks on the button, open the modal
     btn.onclick = function() {
