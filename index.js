@@ -1,13 +1,14 @@
 const pbody = document.querySelector('pbody');
 
-const nextButton = document.getElementById("button-next")
-const preButton = document.getElementById("button-previous")
+const nextButton = document.querySelector("#button-next")
+const preButton = document.querySelector("#button-previous")
 
+const modal = document.getElementById("myModal");
 
-let SWAPI_url = 'http://swapi.dev/api/people/?page=1';
+//let SWAPI_url = 'http://swapi.dev/api/people/?page=1';
 
-async function getSWAPI() {
-    const response = await fetch(SWAPI_url);   
+async function getSWAPI(url = 'http://swapi.dev/api/people/?page=1') {
+    const response = await fetch(url);   
     const data = await response.json();
 
     /*
@@ -25,17 +26,15 @@ async function getSWAPI() {
      
 
     nextButton.onclick = function(){
-        if (data.next !== null) {
-            SWAPI_url = data.next; 
-            getSWAPI();
+        if (data.next !== null) { 
+            getSWAPI(data.next);
         }
     };
     
 
     preButton.onclick = function(){
         if (data.previous !== null) {
-            SWAPI_url = data.previous;
-            getSWAPI();
+            getSWAPI(data.previous);
         }
     }
     
@@ -57,16 +56,16 @@ async function getSWAPI() {
     document.getElementById("demo").innerHTML = counter;
         
     document.querySelector('#modal-content').innerHTML = data.results.map(characters => 
-            `<div>
+            `<div style="display: none">
                 <span class="close">&times;</span>
                 <div class="charAge">Age: ${characters.birth_year}</div>
-                <div class="charAge">Name: ${characters.name}</div>
-            </div>`);
+                <div class="charName">Name: ${characters.name}</div>
+            </div>`).join('');
 
     //---MODAL---
 
     // Get the modal
-    var modal = document.getElementById("myModal");
+    
 
     // Get the button that opens the modal
     var btn = document.getElementsByClassName("myBtn");
@@ -75,23 +74,61 @@ async function getSWAPI() {
     var span = document.getElementsByClassName("close");
 
     // When the user clicks on the button, open the modal
+  /*
     btn.onclick = function() {
     modal.style.display = "block";
     }
+*/
+    const showPerson = (name) => {
+        // scanna samtliga divvar i modalne
+        // sätt inline style, display block på den diven som hör till name
+        const modalChildren = document.querySelector('#modal-content').children
+        for (div of modalChildren) {
+            const nameContent = div.querySelector('.charName').innerText
+            const foundName = nameContent.substr(6, nameContent.length)
+            if (foundName === name) {
+                div.style="display: block"
+            }
+        }
+    }
+/*
+    const hidePerson = (name) => {
+        // som ovan fast tvärtom
+        const modal = document.querySelector('#modal-content').children
+        for (div of modal) {
+            const nameContent = div.querySelector('.charName').innerText
+            const foundName = nameContent.substr(6, nameContent.length)
+            if (foundName === name) {
+                div.style="display: none"
+            }
+        }
+    }
+*/
 
-    $(".myBtn").click(function() {
+const hideModalContents = () => {
+    const modalChildren = document.querySelector('#modal-content').children
+        for (div of modalChildren) {
+            div.style="display: none"
+        }
+}
+    $(".myBtn").click(function(event) {
+        showPerson(event.target.closest('div').children[0].innerText)
+        
         modal.style.display = "block";
     });
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+   /*  $(".close").onclick = function() {
+        console.log("YO")
     modal.style.display = "none";
-    }
+    hideModalContents();
+    } */
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal) {
+        if (event.target == modal || event.target.classList.contains('close')) {
             modal.style.display = "none";
+            hideModalContents();
         }
     }
 };
