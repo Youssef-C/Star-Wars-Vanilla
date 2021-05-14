@@ -14,6 +14,36 @@ html {
   height: 600px;
 }
 
+#searchBar{
+  border-radius: 16px;
+  padding: 8px;
+  margin-left: 40px;
+  height: 30px;
+  width: 230px;
+  color: white;
+  background: linear-gradient(#16191b 0%,#090a0f 100%);
+  border: none;
+  box-shadow:
+      inset 0 0 5px rgb(165, 165, 165),      /* inner white */
+      inset 1px 0 2px #01467D,   /* inner left magenta short */
+      inset -1px 0 2px #464646,  /* inner right cyan short */
+      inset 1px 0 3px #01467D,  /* inner left magenta broad */
+      -1px 0 3px #464646, /* inner right cyan broad */
+      0 0 5px #464646,            /* outer white */
+      -1px 0 8px #01467D,        /* outer left magenta */
+      1px 0 8px #464646;         /* outer right cyan */
+}
+
+::placeholder { 
+  color: white;
+  opacity: 0.8; 
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#searchBar:focus{
+  outline: none;
+}
+
  /*The character cards*/
 .charCard {
   display: flex;
@@ -62,9 +92,10 @@ html {
     margin: 2px;
 }
 
+/*The info in the card*/
 .charInfo {
   margin: 6px;
-  padding: 10px;
+  padding: 20px;
 }
 
   /*Button to open modal*/
@@ -87,9 +118,7 @@ html {
       -1px 0 8px #01467D,        /* outer left magenta */
       1px 0 8px #464646;         /* outer right cyan */
 }
- /* .modalBtn:hover{
-    color: pink;
-  }*/
+
 
 
 #page-buttons {
@@ -144,17 +173,29 @@ html {
     width: 100%;
     height: 100%; 
     overflow: auto;
+    border-radius: 16px;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
   }
   
+  .infoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+  }
+
   /*Modal Content/Box*/
   #modal-content {
+    display: flex;
+    justify-content: center;
+    align-content: center;
     background-color: #fefefe;
     margin: 15% auto; 
-    padding: 20px;
+    padding: 45px;
     border: none;
-    width: 40%; 
+    border-radius: 16px;
+    width: 30%; 
     height: 10%;
     color: white;
     background: linear-gradient(#16191b 0%,#090a0f 100%);
@@ -171,6 +212,8 @@ html {
   
   /*The Close Button*/
   .close {
+    padding: 8px;
+    margin-left: 25px;
     color: #aaa;
     float: right;
     font-size: 28px;

@@ -27,6 +27,7 @@ const loadCharacters = async (url = 'http://swapi.dev/api/people/?page=1') => {
     } catch (err) {
         console.error(err);
     }
+    console.log(data.results);
 
     // These lines takes the next and previous button, and when the user clicks them changes the API call to the "next" or "previous" value/url
     nextButton.onclick = function(){
@@ -49,15 +50,21 @@ const loadCharacters = async (url = 'http://swapi.dev/api/people/?page=1') => {
     document.querySelector('#modal-content').innerHTML = characters.map(characters => 
         `<div style="display: none">
             <span class="close">&times;</span>
-            <div class="charAge">Age: ${characters.birth_year}</div>
-            <div class="charName">Name: ${characters.name}</div>
+            <div class="infoContainer">
+            <div id="charName" class="charInfo"><strong>Name:</strong> ${characters.name}</div>
+            <div class="charInfo"><strong>Age:</strong> ${characters.birth_year}</div>
+            <div class="charInfo"><strong>Gender:</strong> ${characters.gender}</div>
+            <div class="charInfo"><strong>Height:</strong> ${characters.height}" cm"</div>
+            <div class="charInfo"><strong>Hair Color:</strong> ${characters.hair_color}</div>
+            <div class="charInfo"><strong>Eye Color:</strong> ${characters.eye_color}</div>
+            </div>
         </div>`).join('');
         
     //These lines look through all the divs in the modal and, tries to find a match for the name element and then prints data based on the match
     const showPerson = (name) => {
         const modalChildren = document.querySelector('#modal-content').children
         for (div of modalChildren) {
-            const nameContent = div.querySelector('.charName').innerText
+            const nameContent = div.querySelector('#charName').innerText
             const foundName = nameContent.substr(6, nameContent.length)
             // Here it looks for a match and if one is found it changes the elements display property
             if (foundName === name) {
