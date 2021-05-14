@@ -1,0 +1,204 @@
+html {
+  font-family: 'Ubuntu', sans-serif;
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #16191b 0%,#090a0f 100%);
+}
+
+#flexContainer{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 600px;
+}
+
+ /*The character cards*/
+.charCard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 40px;
+  padding: 8px;
+  background: radial-gradient(ellipse at center, #16191b 0%,#090a0f 100%);
+  height: 180px;
+  width: 180px;
+  border-radius: 16px;
+  transition: 0.2s ease-in;
+  color: white;
+  box-shadow:
+      inset 0 0 5px rgb(165, 165, 165),      /* inner white */
+      inset 1px 0 2px #01467D,   /* inner left magenta short */
+      inset -1px 0 2px #464646,  /* inner right cyan short */
+      inset 1px 0 3px #01467D,  /* inner left magenta broad */
+      -1px 0 3px #464646, /* inner right cyan broad */
+      0 0 5px #464646,            /* outer white */
+      -1px 0 8px #01467D,        /* outer left magenta */
+      1px 0 8px #464646;         /* outer right cyan */
+}
+
+.charCard:hover {
+  box-shadow:
+      inset 0 0 50px rgb(165, 165, 165),      /* inner white */
+      inset 10px 0 8px #01467D,   /* inner left magenta short */
+      inset -10px 0 8px #464646,  /* inner right cyan short */
+      inset 10px 0 30px #01467D,  /* inner left magenta broad */
+      -10px 0 30px #464646, /* inner right cyan broad */
+      0 0 50px #464646,            /* outer white */
+      -10px 0 80px #01467D,        /* outer left magenta */
+      10px 0 80px #464646;         /* outer right cyan */
+  
+}
+
+
+/*Card Title, name of character*/
+.charTitle{
+    color: white;
+    height: 40px;
+    width: 160px;
+    margin: 2px;
+}
+
+.charInfo {
+  margin: 6px;
+  padding: 10px;
+}
+
+  /*Button to open modal*/
+.modalBtn{
+  width: 75px;
+  height: 40px;
+  border-radius: 16px;
+  border: none;
+  padding: 6px;
+  margin: 8px;
+  color: white;
+  background: linear-gradient(#16191b 0%,#090a0f 100%);
+  box-shadow:
+      inset 0 0 5px rgb(165, 165, 165),      /* inner white */
+      inset 1px 0 2px #01467D,   /* inner left magenta short */
+      inset -1px 0 2px #464646,  /* inner right cyan short */
+      inset 1px 0 3px #01467D,  /* inner left magenta broad */
+      -1px 0 3px #464646, /* inner right cyan broad */
+      0 0 5px #464646,            /* outer white */
+      -1px 0 8px #01467D,        /* outer left magenta */
+      1px 0 8px #464646;         /* outer right cyan */
+}
+ /* .modalBtn:hover{
+    color: pink;
+  }*/
+
+
+#page-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+  /*Next and previous button*/
+.page-button{
+    display: inline-block;
+    width: 75px;
+    height: 40px;
+    border-radius: 16px;
+    border: none;
+    padding: 6px;
+    margin: 8px;
+    color: white;
+    transition: 0.2s ease-in;
+    background: linear-gradient(#16191b 0%,#090a0f 100%);
+    box-shadow:
+        inset 0 0 5px rgb(165, 165, 165),      /* inner white */
+        inset 1px 0 2px #01467D,   /* inner left magenta short */
+        inset -1px 0 2px #464646,  /* inner right cyan short */
+        inset 1px 0 3px #01467D,  /* inner left magenta broad */
+        -1px 0 3px #464646, /* inner right cyan broad */
+        0 0 5px #464646,            /* outer white */
+        -1px 0 8px #01467D,        /* outer left magenta */
+        1px 0 8px #464646;         /* outer right cyan */
+}
+
+  .page-button:hover{
+    box-shadow:
+      inset 0 0 5px rgb(165, 165, 165),      /* inner white */
+      inset 1px 0 4px #01467D,   /* inner left magenta short */
+      inset -1px 0 4px #888888,  /* inner right cyan short */
+      inset 1px 0 6px #01467D,  /* inner left magenta broad */
+      -1px 0 6px #888888, /* inner right cyan broad */
+      0 0 10px #888888,            /* outer white */
+      -5px 0 12px #01467D,        /* outer left magenta */
+      5px 0 12px #888888;         /* outer right cyan */
+  }
+
+  /*---MODAL STYLING---*/
+
+  /*The Modal (background)*/
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  /*Modal Content/Box*/
+  #modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: none;
+    width: 40%; 
+    height: 10%;
+    color: white;
+    background: linear-gradient(#16191b 0%,#090a0f 100%);
+    box-shadow:
+      inset 0 0 5px rgb(165, 165, 165),      /* inner white */
+      inset 1px 0 2px #01467D,   /* inner left magenta short */
+      inset -1px 0 2px #464646,  /* inner right cyan short */
+      inset 1px 0 3px #01467D,  /* inner left magenta broad */
+      -1px 0 3px #464646, /* inner right cyan broad */
+      0 0 5px #464646,            /* outer white */
+      -1px 0 8px #01467D,        /* outer left magenta */
+      1px 0 8px #464646;         /* outer right cyan */
+  }
+  
+  /*The Close Button*/
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  } 
+
+
+
+  #title {
+    position: relative;
+    top: 50%;
+    left: 0;
+    right: 0;
+    color: #fff;
+    text-align: center;
+    font-weight: 300;
+    font-size: 50px;
+    letter-spacing: 10px;
+    margin-top: -60px;
+    padding-left: 10px;
+  }
+
+  
+  

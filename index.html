@@ -5,16 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Wars API App</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="index.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="test.js" defer></script>
+    <link rel="stylesheet" href="./styles/style1.css">
 </head>
 <body>
-    <h1>Red title</h1>
+    <div id="stars"></div>
+    <div id="stars1"></div>
+    <div id="stars2"></div>
+    <div id="title">
+        <span>PURE CSS</span>
+        <br>
+        <span>SWAPI API</span>
+    </div>
 
     <div id="app">
+        <div id="searchWrapper">
+            <input 
+                type="text"
+                name="searchBar"
+                id="searchBar"
+                placeholder="Search for a character on the page">
+        </div>
         <div id="flexContainer"></div>
-        <h3>Display names here</h3>
     </div>
 
     <!-- The Modal -->
@@ -26,8 +41,10 @@
     </div>
 
     </div>
-    
-    <button class="page-button" id="button-previous">Previous</button>   
-    <button class="page-button" id="button-next">Next</button> 
+
+    <div id="page-buttons">
+        <button class="page-button" id="button-previous">Previous</button>   
+        <button class="page-button" id="button-next">Next</button> 
+    </div>
 </body>
 </html>
